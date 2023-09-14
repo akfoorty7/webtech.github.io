@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="recipelist.css">
+    <title>Recipe List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .recipe-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .recipe-card {
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+            width: 300px;
+        }
+        .recipe-thumbnail {
+            max-width: 100%;
+            height: auto;
+        }
+        .search-bar {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recipe List</h1>
+    <nav>
+        <div class="nav-links">
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                    <a href="recipedetail.html">Recipe Detail</a>
+                </li>
+                <li>
+                    <a href="about.html">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search">
+        <button onclick="searchRecipes()">Search</button>
+    </div>
+
+    <div class="recipe-container" id="recipe-list">
+      
+    </div>
+
+    <script>
+        const recipes = [
+    { title: "Spaghetti Bolognese", description: "Classic Italian pasta dish", thumbnail: "Images/Spaghetti.png" },
+    { title: "Chicken Stir-Fry", description: "Quick and easy weeknight dinner", thumbnail: "Images/Chicken.png" },
+    { title: "Chocolate Cake", description: "Decadent dessert for chocolate lovers", thumbnail: "Images/chocolate.jpg" },
+    { title: "Banana Walnut", description: "Decadent dessert for chocolate lovers", thumbnail: "Images/BananaWalnut.png" },
+    { title: "Chicken Salad", description: "Quick and easy weeknight dinner", thumbnail: "Images/ChickenSalad.png" },
+    { title: "Burritos", description: "Quick and easy breakfast", thumbnail: "Images/burritos.png" },
+    { title: "Blueberry", description: "Classic Italian pasta dish", thumbnail: "Images/blueberry.png" },
+    { title: "Salmon", description: "Quick and easy weeknight dinner", thumbnail: "Images/Salmon.png" },
+    { title: "Scrambled Eggs", description: "Quick and easy breakfast", thumbnail: "Images/scrambled eggs.png" },
+    { title: "Tofu", description: "Quick and easy weeknight dinner", thumbnail: "Images/Tofu.png" },
+    { title: "Shrimp Linguine", description: "Quick and easy breakfast", thumbnail: "Images/ShrimpLinguine.png" },
+];
+
+function displayRecipes(recipesToDisplay) {
+    const recipeList = document.getElementById("recipe-list");
+    recipeList.innerHTML = "";
+
+    (recipesToDisplay || recipes).forEach((recipe, index) => {
+        const recipeCard = document.createElement("div");
+        recipeCard.className = "recipe-card";
+
+        const thumbnail = recipe.thumbnail ? `<img src="${recipe.thumbnail}" alt="${recipe.title}" class="recipe-thumbnail">` : "";
+        
+        recipeCard.innerHTML = `
+            ${thumbnail}
+            <h2>${recipe.title}</h2>
+            <p>${recipe.description}</p>
+
+        `;
+
+        recipeList.appendChild(recipeCard);
+    });
+}
+
+function searchRecipes() {
+    const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+    const filteredRecipes = recipes.filter(recipe => recipe.title.toLowerCase().includes(searchTerm) || recipe.description.toLowerCase().includes(searchTerm));
+    displayRecipes(filteredRecipes);
+}
+
+// Function to view recipe details (replace with your implementation)
+function viewRecipe(index) {
+    console.log("Viewing recipe:", recipes[index]);
+    // Implement the code to display full recipe details here
+}
+
+// Function to delete a recipe (replace with your implementation)
+function deleteRecipe(index) {
+    console.log("Deleting recipe:", recipes[index]);
+    // Implement the code to delete the recipe here
+}
+
+// Initial display
+displayRecipes();
+    </script>
+</body>
+</html>

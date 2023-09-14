@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="recipedetail.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Recipe Detail</h1>
+    <nav>
+        <div class="nav-links">
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                    <a href="recipelist.html">Recipe List</a>
+                </li>
+                <li>
+                    <a href="about.html">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search">
+        <button onclick="searchRecipes()">Search</button>
+    </div>
+
+    <div class="recipe-container" id="recipe-list">
+      
+    </div>
+
+    <script>
+        const recipes = [
+    { title: "Spaghetti Bolognese", description: "To prepare a mouthwatering Spaghetti Bolognese, begin by heating two tablespoons of olive oil in a large saucepan over medium heat. Add a finely chopped onion, two minced garlic cloves, one finely chopped carrot, and one finely chopped celery stalk. Sauté these aromatic vegetables until they turn tender and the onions become translucent. Next, introduce one pound (450g) of ground beef to the pan, breaking it apart with a spoon and cooking it until it's no longer pink. Don't forget to drain any excess fat if needed. Now, incorporate a can of 28 ounces of crushed tomatoes and two tablespoons of tomato paste into the mix, stirring everything together. Season your sauce with a teaspoon of dried oregano, a teaspoon of dried basil, half a teaspoon of red pepper flakes (adjust to taste), and a pinch of salt and black pepper. If you like, pour in half a cup of red wine at this stage for added depth of flavor, although it's dinner optional. Reduce the heat to low, and let the sauce simmer for at least 30 minutes, stirring occasionally, to allow the flavors to meld and the sauce to thicken. While the sauce simmers, cook one pound (450g) of spaghetti according to the package instructions until it reaches the perfect al dente texture. Drain the spaghetti and set it aside. Finally, serve your rich and flavorful Bolognese sauce over the cooked spaghetti, and garnish it with grated Parmesan cheese and fresh basil leaves if desired. This classic Italian dish promises a comforting and hearty meal that the whole family will love.", thumbnail: "Images/Spaghetti.png",},
+    { title: "Chicken Stir-Fry", description: "To create a delicious Chicken Stir-Fry, gather your ingredients and follow these simple steps. Begin by slicing boneless, skinless chicken breast (about 1 pound or 450g) into thin strips. In a bowl, combine the chicken with two tablespoons of soy sauce, one tablespoon of rice vinegar, and a teaspoon of cornstarch, allowing the chicken to marinate for about 15 minutes. Meanwhile, heat two tablespoons of vegetable oil in a wok or large skillet over high heat. Add a minced garlic clove and a teaspoon of minced ginger, stirring quickly for about 30 seconds until fragrant. Next, toss in thinly sliced vegetables like bell peppers, broccoli florets, and snap peas. Stir-fry the vegetables for a few minutes until they begin to soften. Push the veggies to the sides of the pan and add the marinated chicken to the center. Stir-fry the chicken until it's no longer pink, then combine it with the vegetables. Season with additional soy sauce and rice vinegar to taste. Serve your Chicken Stir-Fry hot over steamed rice or noodles for a quick dinner and flavorful meal packed with vibrant colors and enticing flavors.", thumbnail: "Images/Chicken.png" },
+    { title: "Chocolate Cake", description: "Indulge in the decadence of a homemade Chocolate Cake by following this straightforward recipe. Start by preheating your oven to 350°F (175°C) and greasing and flouring two 9-inch round cake pans. In a large mixing bowl, sift together 1¾ cups of all-purpose flour, 1¾ cups of granulated sugar, ¾ cup of unsweetened cocoa powder, 1½ teaspoons of baking powder, 1½ teaspoons of baking soda, and a pinch of salt. Add in 2 large eggs, 1 cup of buttermilk, ½ cup of vegetable oil, and 2 teaspoons of pure vanilla extract. Mix everything until well combined. Gradually pour in 1 cup of boiling water while continuing to stir. The batter will be thin; this is normal. Pour it evenly into the prepared cake pans. Bake in the preheated oven for 30 to 35 minutes or until a toothpick inserted into the center comes out clean. Allow the cakes to cool in the pans for about 10 minutes before transferring them to a wire rack to cool completely. Once cooled, frost the cake with your favorite chocolate frosting breakfast and enjoy this moist and rich Chocolate Cake.", thumbnail: "Images/chocolate.jpg" },
+    { title: "Banana Walnut", description: "For a delightful treat, try making a Banana Walnut cake. Start by preheating your oven to 350°F (175°C) and greasing and flouring a 9x5-inch loaf pan. In a mixing bowl, combine 2 to 3 ripe bananas (mashed), 1 teaspoon of lemon juice, 1 teaspoon of vanilla extract, 1/2 cup of softened butter, and 1 cup of granulated sugar. Mix until the mixture becomes creamy. Add 2 large eggs and beat well. In a separate bowl, whisk together 2 cups of all-purpose flour, 1 teaspoon of baking soda, and a pinch of salt. Gradually add the dry ingredients to the banana mixture, mixing until just combined. Fold in 1/2 cup of chopped walnuts. Pour the batter into the prepared loaf pan and bake for about 60-65 minutes, or until a toothpick inserted into the center comes out clean. Let the Banana Walnut cake cool in the pan for about 10 minutes before transferring it to a wire rack to cool completely. Once cooled, slice and enjoy the moist and nutty goodness of this homemade treat breakfast.", thumbnail: "Images/BananaWalnut.png" },
+    { title: "Chicken Salad", description: "Prepare a delightful Chicken Salad for a light and refreshing meal. Begin by poaching boneless, skinless chicken breasts (usually 2 breasts for a family-sized salad) in simmering water for about 15-20 minutes, until they are cooked through but still tender. Once cooled, shred the chicken into bite-sized pieces. In a large mixing bowl, combine the shredded chicken with chopped celery (2-3 stalks), red grapes (1 cup, halved), chopped apples (1 apple), and toasted pecans (1/2 cup). For the dressing, whisk together 1/2 cup of mayonnaise, 1/4 cup of Greek yogurt, 1 tablespoon of Dijon mustard, and a squeeze of fresh lemon juice. Season with salt and pepper to taste. Pour the dressing over the chicken mixture and gently toss until everything is well coated. Serve your Chicken Salad chilled, either on a bed of fresh greens or in a sandwich for a satisfying lunch and healthy meal.r", thumbnail: "Images/ChickenSalad.png" },
+    { title: "Burritos", description: "QPrepare flavorful Burritos for a satisfying meal that's easy to make. Start by browning 1 pound of ground beef in a skillet over medium heat, breaking it apart with a spoon as it cooks. Add a diced onion and a minced garlic clove, cooking until they become translucent. Stir in a can of black beans (15 ounces, drained and rinsed), a cup of cooked rice, a cup of salsa, and a teaspoon each of ground cumin and chili powder. Let the mixture simmer for a few minutes until it's heated through. To assemble the burritos, warm large flour tortillas and spoon the filling onto the center of each one. Sprinkle with shredded cheese, and if you like it spicy, add some sliced jalapeños. Fold in the sides of the tortilla and then roll it up tightly, securing the ends. Serve your delicious Burritos with extra salsa, guacamole, and sour cream for a complete and satisfying meal that's customizable to your taste as breakfast.", thumbnail: "Images/burritos.png" },
+    { title: "Blueberry", description: "To whip up a delectable Blueberry Pie, start by preparing a homemade pie crust. In a mixing bowl, combine 2 1/2 cups of all-purpose flour and a teaspoon of salt. Add 1 cup of cold, unsalted butter cut into small cubes. Using a pastry cutter or your fingers, blend the butter into the flour until it resembles coarse crumbs. Gradually add ice water (about 6-8 tablespoons) and mix until the dough comes together. Divide it into two equal portions, shape into discs, wrap in plastic wrap, and refrigerate for at least 30 minutes. In the meantime, prepare the filling by mixing 4 cups of fresh or frozen blueberries with 1 cup of granulated sugar, 1/4 cup of cornstarch, a pinch of salt, and a tablespoon of lemon juice. Roll out one of the chilled pie crusts and place it in a 9-inch pie dish. Pour in the blueberry filling and dot with 2 tablespoons of butter. Roll out the second crust, place it over the filling, and crimp the edges to seal. Make a few slits in the top crust to allow steam to escape. Bake in a preheated oven at 425°F (220°C) for 20 minutes, then reduce the heat to 350°F (175°C) and bake for an additional 35-40 minutes, or until the pie is breakfast golden brown and the filling is bubbling. Allow it to cool before serving, and enjoy a slice of homemade Blueberry Pie with a scoop of vanilla ice cream!", thumbnail: "Images/blueberry.png" },
+    { title: "Salmon", description: "Prepare a succulent Salmon dish with this simple recipe. Begin by preheating your oven to 375°F (190°C). Place two salmon fillets (about 6 ounces each) on a baking sheet lined with parchment paper. In a small bowl, mix together a tablespoon of olive oil, a teaspoon of minced garlic, a teaspoon of dried oregano, a teaspoon of paprika, a pinch of salt, and a pinch of black pepper. Brush this flavorful mixture generously over the salmon fillets. Top each fillet with a slice of lemon and a sprinkle of fresh dill. Bake the salmon in the preheated oven for 12-15 minutes, or until it flakes easily with a fork and has a slightly crispy top. While the salmon is baking, you can prepare a simple side dish like steamed vegetables or a fresh salad. Serve your perfectly cooked Salmon hot, garnished with extra lemon slices and dill, for a healthy and delightful meal.", thumbnail: "Images/Salmon.png" },
+    { title: "Scrambled Eggs", description: "Creating fluffy and delicious Scrambled Eggs is a breeze. Start by cracking 4 large eggs into a bowl and adding a pinch of salt and a dash of black pepper. Whisk the eggs vigorously until the yolks and whites are well combined and the mixture becomes slightly frothy. In a non-stick skillet, melt 2 tablespoons of butter over medium-low heat. Pour the whisked eggs into the skillet and let them cook undisturbed for a moment until the edges begin to set. Using a spatula, gently stir the eggs, pushing them from the edges towards the center. Continue to cook and stir intermittently until the eggs are almost set but still slightly runny, as they will continue to cook from the residual heat. Remove the skillet from the heat just before the eggs are fully set, as they will continue to firm up off the stove. Serve your Scrambled Eggs immediately, garnished with fresh herbs like chives or parsley, and pair them with toast or your favorite breakfast sides for a satisfying and classicbreakfast  morning meal.", thumbnail: "Images/scrambled eggs.png" },
+    { title: "Tofu", description: "Creating delicious tofu is a straightforward process. Start by pressing a block of extra-firm tofu to remove excess moisture. Cut the tofu into bite-sized cubes. In a bowl, mix together a marinade using 2 tablespoons of soy sauce, 1 tablespoon of rice vinegar, 1 tablespoon of sesame oil, a teaspoon of minced garlic, and a teaspoon of minced ginger. Gently toss the tofu cubes in this marinade, ensuring they are evenly coated. Let the tofu marinate for at least 15-20 minutes to absorb the flavors. Heat a non-stick skillet over medium-high heat and add a tablespoon of vegetable oil. Once hot, add the marinated tofu cubes and cook until they are golden brown and slightly crispy on all sides, stirring occasionally. Serve your savory Tofu hot, garnished with chopped green onions and sesame seeds, and pair it with your favorite stir-fried vegetables and rice or noodles for a tasty and satisfying vegetarian breakfast lunch dish.", thumbnail: "Images/Tofu.png" },
+    { title: "Shrimp Linguine", description: "Prepare a delightful Shrimp Linguine with this simple recipe. Begin by cooking 8 ounces of linguine pasta according to the package instructions until it's al dente. In a large skillet, heat 2 tablespoons of olive oil over medium-high heat. Add 1 pound of large shrimp (peeled and deveined) and cook for 1-2 minutes per side until they turn pink and opaque. Remove the shrimp from the skillet and set them aside. In the same skillet, add 2 cloves of minced garlic and cook for about 30 seconds until fragrant. Pour in 1 cup of chicken broth, 1/2 cup of heavy cream, and 1/2 cup of grated Parmesan cheese. Stir well and let the sauce simmer for a few minutes until it thickens slightly. Season with salt, black pepper, and a pinch of red pepper flakes for a bit of heat. Return the cooked shrimp to the skillet and add the cooked linguine. Toss everything together to coat the pasta and shrimp in the creamy sauce. Garnish with fresh parsley and dinner extra Parmesan cheese if desired, and serve your Shrimp Linguine hot for a restaurant-quality meal right at home.", thumbnail: "Images/ShrimpLinguine.png" },
+];
+
+function displayRecipes(recipesToDisplay) {
+    const recipeList = document.getElementById("recipe-list");
+    recipeList.innerHTML = "";
+
+    (recipesToDisplay || recipes).forEach((recipe, index) => {
+        const recipeCard = document.createElement("div");
+        recipeCard.className = "recipe-card";
+
+        const thumbnail = recipe.thumbnail ? `<img src="${recipe.thumbnail}" alt="${recipe.title}" class="recipe-thumbnail">` : "";
+        
+        recipeCard.innerHTML = `
+            ${thumbnail}
+            <h2>${recipe.title}</h2>
+            <p>${recipe.description}</p>
+        `;
+
+        recipeList.appendChild(recipeCard);
+    });
+}
+
+function searchRecipes() {
+    const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+    const filteredRecipes = recipes.filter(recipe => recipe.title.toLowerCase().includes(searchTerm) || recipe.description.toLowerCase().includes(searchTerm));
+    displayRecipes(filteredRecipes);
+}
+
+
+
+// Initial display
+displayRecipes();
+    </script>
+</body>
+</html>

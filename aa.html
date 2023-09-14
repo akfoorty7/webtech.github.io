@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="recipelist.css">
+    <title>Recipe List</title>
+    <style>
+        /* ... (your existing CSS styles) ... */
+    </style>
+</head>
+<body>
+    <h1>Recipe List</h1>
+    <!-- ... (your existing navigation and search bar code) ... -->
+
+    <div class="recipe-container" id="recipe-list">
+        <!-- Loop through the recipes and create a recipe card for each one -->
+        <!-- Start of loop -->
+        <div class="recipe-card">
+            <img src="Images/Spaghetti.png" alt="Spaghetti Bolognese" class="recipe-thumbnail">
+            <h2>Spaghetti Bolognese</h2>
+            <p>Classic Italian pasta dish</p>
+            <button onclick="viewRecipe(0)">View Details</button>
+            <button onclick="deleteRecipe(0)">Delete</button>
+        </div>
+
+        <!-- Repeat the above code block for each recipe in the 'recipes' array -->
+        <!-- ... (repeat for all recipes) ... -->
+        <!-- End of loop -->
+    </div>
+
+    <script>
+        // JavaScript code (your existing code for displaying recipes)
+    </script>
+</body>
+</html>
